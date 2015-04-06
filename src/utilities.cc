@@ -1,4 +1,4 @@
-#include "utilities.hh"
+#include <utilities.hh>
 
 #include <iostream>
 #include <fstream>
