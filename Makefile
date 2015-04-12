@@ -1,4 +1,4 @@
-CC=clang++
+CC=g++
 LDLIBS= 
 SOURCES_DIR=src/
 SOURCES=$(SOURCES_DIR)*.cc
