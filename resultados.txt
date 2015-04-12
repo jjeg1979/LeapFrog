@@ -1,0 +1,2 @@
+304.794 milliseconds passed
+./main done!
