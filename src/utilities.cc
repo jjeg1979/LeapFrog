@@ -10,22 +10,38 @@ namespace utilities
   {
     std::ifstream fs(str);
     if (!fs.is_open()) {
-      std::cerr << "ERROR: File " << str << " could not be found" << std::endl;
+      //std::cerr << "[file_exists] File " << str << " could not be found" << std::endl;
       return false;
     }
 
     return true;
   }
 
-  bool preconditions (int argc, char ** argv)
+  int preconditions (int argc, char ** argv)
   {
-    if (argc != 2) {
-      std::cerr << "There should be 1 argument provided only" << std::endl;
-      return false;
+    int retVal = -1;
+    if ((argc != 3) && (argc != 4)) {
+      std::cerr << "Incorrect amount of arguments provided" << std::endl;
+      return retVal;
     }
 
-    std::string fileName { argv[1] };
-    return file_exists( fileName );
+    std::string option { argv[1] };
+    std::cerr << "option: "<< option << std::endl;
+    if (option == std::string( "-i" )) {
+      std::string fileName { argv[2] };
+      if (file_exists( fileName )) 
+	retVal = 0;
+    }
+    else if (option == std::string( "-o" )) {
+      std::string fileName { argv[2] };
+      if (file_exists( fileName )) 
+	std::cerr << "File " << fileName << " will be overwriten" << std::endl;
+      retVal = 1;
+    }
+    else
+      std::cerr << "ERROR: Unknown option" << std::endl;
+
+    return retVal;
   }
 
   void clean_line (std::string & line)

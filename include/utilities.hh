@@ -7,7 +7,11 @@
 namespace utilities
 {
   bool file_exists(const std::string & str);
-  bool preconditions (int argc, char ** argv);
+  // return value codes:
+  //   -1 error
+  //    0 input parameter option detected
+  //    1 output parameter option detected
+  int preconditions (int argc, char ** argv);
   // cleans the line of end of line return carriages
   void clean_line(std::string & line); 
 }
